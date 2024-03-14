@@ -10,15 +10,18 @@ test_hands = [
     ["Ac", "5c", "10c", "7c", "3c"],
     ["5c", "8d", "5h", "8s", "8h"],
     ["3d", "7h", "7s", "7c", "7d"],
+    ["5c", "4c", "8c", "7c", "6c"],
     ["As", "10s", "Qs", "Ks", "Js"],
+    ["10c", "Jc", "Qc", "Ac", "Kc"],
+    ["3h", "5h", "Qs", "9h", "Ac"],
+    ["10s", "10c", "Ah", "10d", "10h"]
 ]
 
 
 # Part 1
-def hand_ranking(hand=[]):
-    print()
-    print("Is flush: {}".format(hand_evaluator_service.is_flush(hand)))
-    return "hand"
+def hand_ranking(hand=[]): 
+    hand_rank = hand_evaluator_service.rank_hand(hand)   
+    return hand_evaluator_service.display_rank(hand_rank)
 
 # Part 2
 def deal_cards(player_list):

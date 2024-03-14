@@ -39,4 +39,45 @@ def get_card_count(hand, num_occurences, ignore_card=None):
         if(card_value != ignore_card and freq[card_value] == num_occurences):
             return card_value
     return None    
+
+def rank_hand(hand):
+    if get_straight_high_card(hand) == 14 and is_flush(hand):
+        return 9 #Royal Flush
+    if get_straight_high_card(hand) is not None and is_flush(hand):
+        return 8 #Straight Flush
+    if get_card_count(hand,4) is not None:
+        return 7 #4 of a Kind
+    if get_card_count(hand, 3) is not None and get_card_count(hand, 2) is not None:
+        return 6 #Full House
+    if is_flush(hand):
+        return 5 #Flush
+    if get_straight_high_card(hand) is not None:
+        return 4 #Straight
+    if get_card_count(hand,3) is not None:
+        return 3 #3 of a kind
+    pair1 = get_card_count(hand, 2)
+    if pair1 is not None:
+        if get_card_count(hand, 2, pair1) is not None:
+            return 2 #two pair
+        return 1 # pair
+    return 0 #High Card
+
+def display_rank(rank):
+    rank_map = {
+        9: "Royal Flush",
+        8: "Straight Flush",
+        7: "Four of a Kind",
+        6: "Full House",
+        5: "Flush",
+        4: "Straight",
+        3: "Three of a Kind",
+        2: "Two Pair",
+        1: "Pair",
+        0: "High Card"
+    }
+
+    return rank_map[rank]
+
+
+    
     
