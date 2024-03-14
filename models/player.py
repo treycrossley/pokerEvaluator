@@ -14,7 +14,10 @@ class Player:
         self.hand = []
 
     def draw_cards(self, numCards):
-        self.hand = Deck.deal(self.deck,numCards)
+        hand = Deck.deal(self.deck,numCards)
+        if hand is not False:
+            self.hand = hand
+        return hand
     
     def show_hand(self):
-        print(self.hand)
+        return(str(self.hand))
