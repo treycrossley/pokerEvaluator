@@ -1,6 +1,6 @@
-from card import Card
-from deck import Deck
-import hand_evaluator_service
+from models.deck import Deck
+from models.card import Card
+import services.hand_evaluator_service as hand_evaluator_service
 
 test_hands = [
     ["Ac", "5c", "10c", "7c", "3s"],
@@ -18,10 +18,10 @@ test_hands = [
     ["10s", "10c", "Ah", "10d", "10h"]
 ]
 
-test_players = ["Westley", "Buttercup"]
+test_players = ["Westley", "Buttercup", "Inigo", "Fezzik"]
 
 # Part 1
-def hand_ranking(hand=[]): 
+def hand_ranking(hand): 
     hand_rank = hand_evaluator_service.rank_hand(hand)   
     return hand_evaluator_service.display_rank(hand_rank)
 
@@ -44,7 +44,8 @@ def main():
     # for hand in test_hands:
     #     print(hand_ranking(hand))
 
-    print(deal_cards(test_players))
+    round = deal_cards(test_players)
+    print(winner_is(round))
 
 
 main()

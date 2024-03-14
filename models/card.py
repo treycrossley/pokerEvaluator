@@ -14,7 +14,6 @@ class Card:
         str_length = len(card_string)
         return card_string[:str_length - 1]
 
-
     def get_suit(self):
         return self.suit
     
