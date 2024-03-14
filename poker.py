@@ -16,10 +16,8 @@ test_hands = [
 
 # Part 1
 def hand_ranking(hand=[]):
-    for card in hand:
-        val = hand_evaluator_service.get_value(card)
-        suit = hand_evaluator_service.get_suit(card)
-        print("{} of {}".format(val, suit))
+    print()
+    print("Is flush: {}".format(hand_evaluator_service.is_flush(hand)))
     return "hand"
 
 # Part 2
