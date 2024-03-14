@@ -16,4 +16,19 @@ def get_value(card_string):
 def is_flush(hand):
     card_suits = set(map(get_suit,hand))
     return len(card_suits) == 1
+
+def get_card_frequency(hand):
+    freq = {card:0 for card in range(1,15)} #initialize card dict with zero occurences
+    for card in hand:
+        val = get_value(card)
+        freq[val] += 1
+    freq[1] = freq[14] #Ace high/low case
+    return freq
     
+
+def get_straight_high_card(hand):
+    freq = get_card_frequency(hand)
+    for val in range(1,11):
+        if all([freq[val + i] == 1 for i in range(0,5)]):
+            return val + 4
+    return None
