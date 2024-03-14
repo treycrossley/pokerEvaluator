@@ -1,5 +1,5 @@
 import services.hand_evaluator_service as hand_evaluator_service
-from unittest import mock
+import pytest
 
 def test_get_suit():
     assert hand_evaluator_service.get_suit("Qs") == "s"

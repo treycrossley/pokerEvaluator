@@ -1,4 +1,5 @@
 from models.deck import Deck
+import pytest
 
 def test_deck_init():
     deck = Deck()

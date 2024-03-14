@@ -1,5 +1,6 @@
 from models.card import Card
 import services.hand_evaluator_service as hand_evaluator_service
+import pytest
 
 hand = ["10s", "7c", "Ah", "Qd", "2h"]
 

@@ -1,4 +1,5 @@
 import poker
+import pytest
 
 test_hands = [
     ["Ac", "5c", "10c", "7c", "3s"],

@@ -1,4 +1,5 @@
 Python 3.8.2
 random package
+pytest package
 
 (I didn't import anything else for use in this project so hopefully that's enough)

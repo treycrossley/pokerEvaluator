@@ -1,5 +1,6 @@
 from models.player import Player
 from models.deck import Deck
+import pytest
 
 def test_player_init():
     deck = Deck()
