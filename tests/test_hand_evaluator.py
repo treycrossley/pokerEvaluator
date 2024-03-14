@@ -286,12 +286,32 @@ def test_compare_high_card():
     assert d["Doc Marten"] > d["Trey Crossley"] > d["Katy Perry"] > d["Austin Powers"]
 
 
-@mock.patch("services.hand_evaluator_service.eval_tie", return_value = 5, autospec=True)
-def test_eval_tie(mock_eval_tie):
-    assert hand_evaluator_service.eval_tie(1, []) == 5
-    assert hand_evaluator_service.eval_tie(2, []) == 5
-    assert hand_evaluator_service.eval_tie(3, []) == 5
-    assert hand_evaluator_service.eval_tie(4, []) == 5
+# @mock.patch("services.hand_evaluator_service.eval_tie", return_value = 5, autospec=True)
+def test_eval_tie():
+    returnVal = hand_evaluator_service.eval_tie(0, []) 
+    assert isinstance(returnVal, list)
+    returnVal = hand_evaluator_service.eval_tie(1, []) 
+    assert isinstance(returnVal, list)
+    returnVal = hand_evaluator_service.eval_tie(2, []) 
+    assert isinstance(returnVal, list)
+    returnVal = hand_evaluator_service.eval_tie(3, []) 
+    assert isinstance(returnVal, list)
+    returnVal = hand_evaluator_service.eval_tie(4, []) 
+    assert isinstance(returnVal, list)
+    returnVal = hand_evaluator_service.eval_tie(5, []) 
+    assert isinstance(returnVal, list)
+    returnVal = hand_evaluator_service.eval_tie(6, []) 
+    assert isinstance(returnVal, list)
+    returnVal = hand_evaluator_service.eval_tie(7, []) 
+    assert isinstance(returnVal, list)
+    returnVal = hand_evaluator_service.eval_tie(8, []) 
+    assert isinstance(returnVal, list)
+    returnVal = hand_evaluator_service.eval_tie(9, []) 
+    assert isinstance(returnVal, list)
+
+
+
+
 
 def test_eval_tiebreakers():
     players_info = [
