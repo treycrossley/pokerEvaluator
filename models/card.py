@@ -25,8 +25,11 @@ rankMap = {
 }
 
 class Card:
-
-
+    """class representing a Card object
+    instance variables: 
+    1) card suit
+    2) card value
+    """
     def __init__(self, suit, val):
         self.suit = suit
         self.val = val

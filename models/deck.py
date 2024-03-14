@@ -1,6 +1,10 @@
 import random 
 
 class Deck:
+    """class representing a deck object
+    instance variables: 
+    1) the deck of 52 cards. This deck can be shuffled and cards can be removed as they are dealt to other players
+    """
 
     def __init__(self) -> None:
         self.deck = self.create_shuffled_deck()
