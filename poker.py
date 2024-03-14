@@ -35,15 +35,10 @@ def deal_cards(player_list):
     
 
 def winner_is(round):
-    """doc"""
-    pass
-
+    return hand_evaluator_service.determine_winner(round)
 
 
 def main():
-    # for hand in test_hands:
-    #     print(hand_ranking(hand))
-
     round = deal_cards(test_players)
     print(winner_is(round))
 
