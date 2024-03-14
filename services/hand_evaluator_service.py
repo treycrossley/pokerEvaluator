@@ -180,7 +180,7 @@ def group_by_rank(players_info):
         value = [player_data[0], player_data[1]]
         if rank in grouped:
             grouped[rank].append(value)
-        else:
+        else: 
             grouped[rank] = [value]
     return grouped
 
