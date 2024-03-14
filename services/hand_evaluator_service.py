@@ -197,7 +197,7 @@ def compare_straight_flush(competitors):
     rank = 8
     for competitor in competitors:
         hand = competitor[1]
-        frac = get_straight_high_card(hand)/15
+        frac = get_straight_high_card(hand)/15 #arbitrary number to add additional precision to competition within rank
         competitor.append(frac+rank)
     return competitors
 
@@ -213,7 +213,7 @@ def compare_4kind(competitors):
     rank = 7
     for competitor in competitors:
         hand = competitor[1]
-        frac = get_card_count(hand,4)/15
+        frac = get_card_count(hand,4)/15 #arbitrary number to add additional precision to competition within rank
         competitor.append(frac+rank)
     return competitors
 
@@ -229,7 +229,7 @@ def compare_full_house(competitors):
     rank = 6
     for competitor in competitors:
         hand = competitor[1]
-        frac = get_card_count(hand,3)/15
+        frac = get_card_count(hand,3)/15 #arbitrary number to add additional precision to competition within rank
         competitor.append(frac+rank)
     return competitors
 
@@ -245,7 +245,7 @@ def compare_flush(competitors):
     rank = 5
     for competitor in competitors:
         hand = competitor[1]
-        frac = get_high_card(hand)/15
+        frac = get_high_card(hand)/15 #arbitrary number to add additional precision to competition within rank
         competitor.append(frac+rank)
     return competitors
 
@@ -261,7 +261,7 @@ def compare_straight(competitors):
     rank = 4
     for competitor in competitors:
         hand = competitor[1]
-        frac = get_straight_high_card(hand)/15
+        frac = get_straight_high_card(hand)/15 #arbitrary number to add additional precision to competition within rank
         competitor.append(frac+rank)
     return competitors
 
@@ -277,7 +277,7 @@ def compare_3kind(competitors):
     rank = 3
     for competitor in competitors:
         hand = competitor[1]
-        frac = get_card_count(hand,3)/15
+        frac = get_card_count(hand,3)/15 #arbitrary number to add additional precision to competition within rank
         competitor.append(frac+rank)
     return competitors
 
@@ -306,15 +306,15 @@ def compare_2pair(competitors):
     for competitor in competitors:
         hand = competitor[1]
         pair1 = get_card_count(hand,2)
-        frac = pair1/20
+        frac = pair1/20 #arbitrary number to add additional precision to competition within rank
 
         subHand = filter_hand(hand,pair1)
         pair2 = get_card_count(subHand,2)
-        frac += pair2/200
+        frac += pair2/200 #smaller frac to differentiate between tie breaker cases and should not overflow the previous frac
 
         subHand = filter_hand(subHand, pair2)
         kicker = get_high_card(subHand)
-        frac += kicker/2000
+        frac += kicker/2000 #smaller frac to differentiate between tie breaker cases and should not overflow the previous frac
         
         competitor.append(frac+rank)
     return[]
@@ -333,19 +333,19 @@ def compare_pair(competitors):
     for competitor in competitors:
         hand = competitor[1]
         pairNum = get_card_count(hand,2)
-        frac = pairNum/20
+        frac = pairNum/20 #arbitrary number to add additional precision to competition within rank
 
         subHand = filter_hand(hand,pairNum)
         kicker = get_high_card(subHand)
-        frac += kicker/200
+        frac += kicker/200 #smaller frac to differentiate between tie breaker cases and should not overflow the previous frac
 
         subHand = filter_hand(subHand, kicker)
         kicker = get_high_card(subHand)
-        frac += kicker/2000
+        frac += kicker/2000 #smaller frac to differentiate between tie breaker cases and should not overflow the previous frac
 
         subHand = filter_hand(subHand, kicker)
         kicker = get_high_card(subHand)
-        frac += kicker/20000
+        frac += kicker/20000 #smaller frac to differentiate between tie breaker cases and should not overflow the previous frac
 
         competitor.append(frac+rank)
     return competitors
@@ -362,7 +362,7 @@ def compare_high_card(competitors):
     rank = 0
     for competitor in competitors:
         hand = competitor[1]
-        frac = get_high_card(hand)/15
+        frac = get_high_card(hand)/15 #arbitrary number to add additional precision to competition within rank
         competitor.append(frac+rank)
     return competitors
 
@@ -448,11 +448,13 @@ def determine_winner(player_hands):
     """
     results = determine_player_rankings(player_hands)
     max = 0
+    #Find max rank
     for res in results:
         rank = res[2]
         if max < rank:
             max = rank
     winner = ""
+    #For all players whose hand represents the max rank, add them to the winner list
     for res in results:
         rank = res[2]
         if rank == max:

@@ -13,6 +13,7 @@ class Deck:
         return self.deck
 
     def create_deck(self):
+        #initializes a deck with all 52 cards
         deck = []
         for suit in ("c", "d", "h", "s"):
             for card in range(2,15):
