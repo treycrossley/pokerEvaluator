@@ -187,7 +187,7 @@ def compare_straight_flush(competitors):
     """Determines who wins the tie breaker between straight flushes
 
     Parameter:
-    competitors: a list of of player info (player_name, hand, rank)
+    competitors: a list of of player info (player_name, hand)
 
     Returns:
     returns a list of competitors with updated rank to differentiate between which straight-flush wins the tiebreaker
@@ -203,7 +203,7 @@ def compare_4kind(competitors):
     """Determines who wins the tie breaker between 4 of a kind hands
 
     Parameter:
-    competitors: a list of of player info (player_name, hand, rank)
+    competitors: a list of of player info (player_name, hand)
 
     Returns:
     returns a list of competitors with updated rank to differentiate between which straight-flush wins the tiebreaker
@@ -219,7 +219,7 @@ def compare_full_house(competitors):
     """Determines who wins the tie breaker between full house hands
 
     Parameter:
-    competitors: a list of of player info (player_name, hand, rank)
+    competitors: a list of of player info (player_name, hand)
 
     Returns:
     returns a list of competitors with updated rank to differentiate between which wins the tiebreaker
@@ -235,7 +235,7 @@ def compare_flush(competitors):
     """Determines who wins the tie breaker between flush hands
 
     Parameter:
-    competitors: a list of of player info (player_name, hand, rank)
+    competitors: a list of of player info (player_name, hand)
 
     Returns:
     returns a list of competitors with updated rank to differentiate between which wins the tiebreaker
@@ -251,7 +251,7 @@ def compare_straight(competitors):
     """Determines who wins the tie breaker between straight hands
 
     Parameter:
-    competitors: a list of of player info (player_name, hand, rank)
+    competitors: a list of of player info (player_name, hand)
 
     Returns:
     returns a list of competitors with updated rank to differentiate between which wins the tiebreaker
@@ -267,7 +267,7 @@ def compare_3kind(competitors):
     """Determines who wins the tie breaker between 3 of a kind hands
 
     Parameter:
-    competitors: a list of of player info (player_name, hand, rank)
+    competitors: a list of of player info (player_name, hand)
 
     Returns:
     returns a list of competitors with updated rank to differentiate between which  wins the tiebreaker
@@ -289,13 +289,13 @@ def filter_hand(hand, numToRemove):
     Returns:
     a new hand without the filtered cards
     """
-    return filter(lambda card: get_value(card) != numToRemove, hand)
+    return list(filter(lambda card: get_value(card) != numToRemove, hand))
 
 def compare_2pair(competitors):
     """Determines who wins the tie breaker between two-pair hands
 
     Parameter:
-    competitors: a list of of player info (player_name, hand, rank)
+    competitors: a list of of player info (player_name, hand)
 
     Returns:
     returns a list of competitors with updated rank to differentiate between which wins the tiebreaker
@@ -315,14 +315,14 @@ def compare_2pair(competitors):
         frac += kicker/2000 #smaller frac to differentiate between tie breaker cases and should not overflow the previous frac
         
         competitor.append(frac+rank)
-    return[]
+    return competitors
 
 
 def compare_pair(competitors):
     """Determines who wins the tie breaker between 1pair hands
 
     Parameter:
-    competitors: a list of of player info (player_name, hand, rank)
+    competitors: a list of of player info (player_name, hand)
 
     Returns:
     returns a list of competitors with updated rank to differentiate between which wins the tiebreaker
@@ -352,12 +352,13 @@ def compare_high_card(competitors):
     """Determines who wins the tie breaker between high cards
 
     Parameter:
-    competitors: a list of of player info (player_name, hand, rank)
+    competitors: a list of of player info (player_name, hand)
 
     Returns:
     returns a list of competitors with updated rank to differentiate between which wins the tiebreaker
     """
     rank = 0
+    
     for competitor in competitors:
         hand = competitor[1]
         frac = get_high_card(hand)/15 #arbitrary number to add additional precision to competition within rank
@@ -432,7 +433,9 @@ def determine_player_rankings(player_hands):
         rank = rank_hand(hand)
         player_data = [player, hand, rank]
         players_info.append(player_data)
-    return eval_tiebreakers(players_info)
+    res = eval_tiebreakers(players_info)
+    print("Result: " + str(res))
+    return res
     
 
 def determine_winner(player_hands):
