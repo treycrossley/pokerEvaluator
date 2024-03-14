@@ -173,7 +173,6 @@ def group_by_rank(players_info):
     returns a dictionary where the hand_rank is the key and the value is a list of players and their hands that have that rank
     """
     grouped = {}
-    print("PLAYER INFO: " +str(players_info))
     for player_data in players_info:
         rank= player_data[2]
         value = [player_data[0], player_data[1]]
