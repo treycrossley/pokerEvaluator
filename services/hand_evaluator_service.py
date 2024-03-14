@@ -9,7 +9,7 @@ def get_suit(card_string):
     Returns:
     returns the char representing the first letter of the suit (ie. h = heart, c = club)  
     """
-    return card_string[-1]
+    return card_string[-1].lower()
 
 def get_value(card_string):
     """Takes in card string and returns the numerical value of the card
