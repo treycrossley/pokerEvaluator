@@ -1,18 +1,35 @@
+
+
+suitMap = {
+    "h": "hearts",
+    "d": "diamonds",
+    "c": "clubs",
+    "s": "spades"
+}
+
+rankMap = {
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+    6: 6,
+    7: 7,
+    8: 8,
+    9: 9,
+    10: 10,
+    "J": "Jack",
+    "Q": "Queen",
+    "K": "King",
+    "A": "Ace"
+
+}
+
 class Card:
+
 
     def __init__(self, suit, val):
         self.suit = suit
         self.val = val
-
-    @staticmethod
-    def decode_suit_from_string(card_string):
-        str_length = len(card_string)
-        return card_string[str_length-1:].lower()
-    
-    @staticmethod
-    def decode_val_from_string(card_string):
-        str_length = len(card_string)
-        return card_string[:str_length - 1]
 
     def get_suit(self):
         return self.suit
@@ -21,4 +38,4 @@ class Card:
         return self.val
     
     def show(self):
-        print("Suit: {}, Rank: {}".format(self.suit, self.val))
+        print("{} of {}".format(rankMap(self.val), suitMap(self.suit)))
