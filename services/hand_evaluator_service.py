@@ -1,4 +1,3 @@
-from collections import defaultdict
 
 def get_suit(card_string):
     """Takes in card string and returns the character representing the card suit
