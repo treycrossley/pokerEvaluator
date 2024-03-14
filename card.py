@@ -1,17 +1,16 @@
 class Card:
-    def __init__(self, suit, rank):
+
+    def __init__(self, suit, val):
         self.suit = suit
-        self.rank = rank  
+        self.val = val
 
-    def __init__(self, card_string):
-        self.suit = self.decode_suit_from_string(card_string)
-        self.rank = self.decode_rank_from_string(card_string)
-
+    @staticmethod
     def decode_suit_from_string(card_string):
         str_length = len(card_string)
         return card_string[str_length-1:].lower()
     
-    def decode_rank_from_string(card_string):
+    @staticmethod
+    def decode_val_from_string(card_string):
         str_length = len(card_string)
         return card_string[:str_length - 1]
 
@@ -20,7 +19,7 @@ class Card:
         return self.suit
     
     def get_rank(self):
-        return self.rank
+        return self.val
     
-    def print_card(self):
-        print("Suit: {}, Rank: {}".format(self.suit, self.rank))
+    def show(self):
+        print("Suit: {}, Rank: {}".format(self.suit, self.val))
