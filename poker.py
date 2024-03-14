@@ -1,4 +1,5 @@
 from card import Card
+from deck import Deck
 import hand_evaluator_service
 
 test_hands = [
@@ -17,6 +18,7 @@ test_hands = [
     ["10s", "10c", "Ah", "10d", "10h"]
 ]
 
+test_players = ["Westley", "Buttercup"]
 
 # Part 1
 def hand_ranking(hand=[]): 
@@ -25,8 +27,12 @@ def hand_ranking(hand=[]):
 
 # Part 2
 def deal_cards(player_list):
-    """doc"""
-    pass
+    deck = Deck()
+    player_hands = {}
+    for player in player_list:
+        player_hands[player] = deck.deal()
+    return player_hands
+    
 
 def winner_is(round):
     """doc"""
@@ -35,8 +41,10 @@ def winner_is(round):
 
 
 def main():
-    for hand in test_hands:
-        print(hand_ranking(hand))
+    # for hand in test_hands:
+    #     print(hand_ranking(hand))
+
+    print(deal_cards(test_players))
 
 
 main()
