@@ -8,7 +8,7 @@ class Player:
         self.hand = []
 
     def draw_cards(self, numCards):
-        self.hand = Deck.deal(numCards)
+        self.hand = Deck.deal(self.deck,numCards)
     
     def show_hand(self):
         print(self.hand)
