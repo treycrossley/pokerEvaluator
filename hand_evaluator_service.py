@@ -32,3 +32,11 @@ def get_straight_high_card(hand):
         if all([freq[val + i] == 1 for i in range(0,5)]):
             return val + 4
     return None
+
+def get_card_count(hand, num_occurences, ignore_index=None):
+    freq = get_card_frequency(hand)
+    for card_index in range(1,14):
+        if(card_index != ignore_index and freq[card_index] == num_occurences):
+            return card_index
+    return None    
+    
