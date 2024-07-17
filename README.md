@@ -1,5 +1,5 @@
 
-# Python Poker Challenge TC
+# Python Poker TC
 
 
 # List of Files
